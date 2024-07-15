@@ -21,6 +21,7 @@ class Client extends CI_Controller {
 
 		else{
 			/*Page d'accueil*/
+			$this->session->set_userdata("client",$result);
 		}
 	}
 }
