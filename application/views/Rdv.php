@@ -6,22 +6,22 @@
             <div>
                 <form>
                     <div class="row mb-3">
-                        <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
+                        <label for="inputDate" class="col-sm-2 col-form-label">Date </label>
                         <div class="col-sm-10">
-                            <input type="date" class="form-control">
+                            <input type="date" name="date" class="form-control">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="inputTime" class="col-sm-2 col-form-label">Time</label>
+                        <label for="inputTime" class="col-sm-2 col-form-label">Heure debut</label>
                         <div class="col-sm-10">
-                            <input type="time" class="form-control">
+                            <input type="time" name="heure" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Type de service</label>
                     <div class="col-sm-10">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select"name="type" aria-label="Default select example">
                         <option selected>Choisissez votre type de service</option>
                         <option value="1">Simple</option>
                         <option value="2">Standard</option>
