@@ -27,12 +27,20 @@ class ServiceModel extends CI_Model
     }
 
     public function getAll(){
-    $query = $this->db->get('Service');
-    return $query->result_array();
+        $query = $this->db->get('Service');
+        $result= $query->result_array();
+        foreach ($result as $value) {
+            $value['duree']=$this->formatHour($value['duree']);
+        }
+
+        return $result;
     }
     
-   
-
+    function formatHour($double_heure){
+        $heures = floor($double_heure);
+        $minutes = ($double_heure - $heures) * 60;
+        return sprintf("%dh%02d", $heures, $minutes);
+    }
 }
 
 ?>
