@@ -9,7 +9,7 @@ CREATE TABLE Slot(
 CREATE TABLE Service(
    Id_Service INT AUTO_INCREMENT,
    intitule VARCHAR(30) ,
-   duree INT,
+   duree DECIMAL(10,2) ,
    prix DECIMAL(15,2)  ,
    PRIMARY KEY(Id_Service)
 );
@@ -44,11 +44,21 @@ CREATE TABLE Paiement(
 );
 
 CREATE TABLE SlotOccupe(
-    Id_SlotOccupe INT AUTO_INCREMENT,
+    Id_SlotOccupe INT PRIMARY KEY AUTO_INCREMENT,
     dateDOccupe DATETIME,
     dateFOccupe DATETIME,
     Id_Slot INT NOT NULL,
-    FOREIGN KEY(Id_Slot) REFERENCES
+    FOREIGN KEY(Id_Slot)  REFERENCES Slot(Id_Slot)
 );
 
----Views --------------------------------
+---Data--------------------------------
+INSERT INTO Slot (intitule) VALUES
+('A'),
+('B'),
+('C');
+INSERT INTO Service (intitule, duree, prix) VALUES
+('Reparation Simple',1, 150000),
+('Reparation standard', 2, 250000),
+('Complexe', 8, 800000),
+('Entretien', 2.5, 300000);
+

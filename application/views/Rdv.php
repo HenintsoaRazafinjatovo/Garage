@@ -1,4 +1,9 @@
-    
+<?php 
+    if(isset($_GET['message'])){
+?>  
+<script>alert("<?php echo $_GET['message'] ?>")</script>
+
+<?php } ?>
         <main id="main" class="main">
             <div class="pagetitle">
                 <h1>Prendre rendez-vous</h1>
@@ -8,7 +13,7 @@
                     <div class="row mb-3">
                         <label for="inputDate" class="col-sm-2 col-form-label">Date </label>
                         <div class="col-sm-10">
-                            <input type="date" name="date" class="form-control">
+                            <input type="date" name="dateRdv" class="form-control">
                         </div>
                     </div>
 
@@ -26,7 +31,7 @@
                         <?php foreach ($services as $key => $value) { ?>
                             
                         
-                        <option value="<?php echo $value['Id_Client'] ?>"><?php echo $value['intitule'] ?></option>
+                        <option value="<?php echo $value['Id_Service'] ?>"><?php echo $value['intitule'] ?></option>
                         
                         <?php } ?>
                         </select>

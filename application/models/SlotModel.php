@@ -31,23 +31,33 @@ class SlotModel extends CI_Model
     return $query->result_array();
     }
     public function get_available_slots($dateDebut, $dateFin) {
-   
         $allSlots = $this->getAll();
 
         $availableSlots = [];
 
         foreach ($allSlots as $slot) {
-            $this->db->select('COUNT(*) as count');
-            $this->db->from('SlotOccupe');
-            $this->db->where('Id_Slot', $slot['Id_Slot']);
-            $this->db->where('dateDOccupe <', $dateFin);
-            $this->db->where('dateFOccupe >', $dateDebut);
+        //     $this->db->select('COUNT(*) as count');
+        //     $this->db->from('SlotOccupe');
+        //     $this->db->where('Id_Slot', $slot['Id_Slot']);
+        //     $this->db->where('dateDOccupe <', $dateFin->format('Y-m-d H:i:s'));
+        //     $this->db->where('dateFOccupe >', $date->format('Y-m-d H:i:s'));
+        //     $query = $this->db->get();
+        //     $result = $query->row();
+        //     if ($result->count == 0) {
+        //         $availableSlots[] = $slot;
+        //     }
 
-            $query = $this->db->get();
-            $result = $query->row();
+            $dateDebut1=$dateDebut->format('Y-m-d H:i:s');
+            $dateFin1=$dateFin->format('Y-m-d H:i:s');
+            $idSlot=$slot['Id_Slot'];
+            $query="SELECT count(*) as count FROM SlotOccupe WHERE Id_Slot=$idSlot and ((('$dateDebut1' > dateDOccupe and '$dateDebut1' < dateFOccupe) or ('$dateFin1' > dateDOccupe and '$dateFin1' < dateFOccupe)) or ('$dateDebut1' <= dateDOccupe and '$dateFin1'>= dateFOccupe))";
 
-            if ($result->count == 0) {
-                $availableSlots[] = $slot['Id_Slot'];
+            $query = $this->db->query($query);
+            $result = $query->row_array();
+            
+
+            if ($result['count'] == 0) {
+                $availableSlots[] = $slot;
             }
         }
 

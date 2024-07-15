@@ -55,9 +55,13 @@ class RdvModel extends CI_Model
         $query = $this->db->query($sql);
         $res = $query->row_array();
         $duree=$res["duree"];
-        $dateF=addHoursToDateTime($dateD,$duree);
-        if(isWithinBusinessHours($dateD)){
-            if(!isWithinBusinessHours($dateF)){
+        $dateF=$this->addHoursToDateTime($dateD,$duree);
+       
+        
+        if($this->isWithinBusinessHours($dateD)){
+            
+
+            if(!$this->isWithinBusinessHours($dateF)){
                 $end18=clone $dateF;
                 $end18->setTime(18,0,0);
                 $diff=date_diff($dateF,$end18);
@@ -65,8 +69,9 @@ class RdvModel extends CI_Model
                 $start8->modify("+1 days");
                 $start8->setTime(8,0,0);
                 $dateF=date_add($diff,$start8);
+
             }
-            $slotDisponibles= $this->SlotModel->get_available_slots($dateD,$dateF);
+             $slotDisponibles= $this->SlotModel->get_available_slots($dateD,$dateF);
         }
         return [$slotDisponibles,$dateF];
     }
@@ -74,24 +79,25 @@ class RdvModel extends CI_Model
     {   
         $resultFunction=$this->slotDisponibles($dateD,$idService);
         $slotDisponibles=$resultFunction[0];
+    
         $dateF=$resultFunction[1];
         if(count($slotDisponibles)>0){   
             $data=array(
-                'dateHdebut'=>$dateD,
-                'id_Service'=>$idService,
-                'id_Slot'=>$slotDisponibles[0]['id_Slot'],
-                'id_Client'=>$idClient
+                'dateHdebut'=>$dateD->format('Y-m-d H:i:s'),
+                'Id_Service'=>$idService,
+                'Id_Slot'=>$slotDisponibles[0]['Id_Slot'],
+                'Id_Client'=>$idClient
             );
             $this->insert($data);
-            $data2=array(
-                'dateDOccupe'=>$dateD,
-                'dateFOccupe'=>$dateF,
-                'id_Slot'=>$slotDisponibles[0]['id_Slot']
-            );
-            $this->SlotModel->insert("SlotOccupe",$data2);
+            $dateD=$dateD->format('Y-m-d H:i:s');
+            $dateF=$dateF->format('Y-m-d H:i:s');
+            $idSlot=$slotDisponibles[0]['Id_Slot'];
+            
+            $sql="INSERT INTO SlotOccupe (dateDOccupe, dateFOccupe,Id_Slot) VALUES ('$dateD','$dateF',$idSlot)";
+            $this->db->query($sql);
             $query = $this->db->get_where('Rdv',$data);
             $rdv=$query->row_array();
-            return $rdv['id_Rdv'];
+            return $rdv['Id_Rdv'];
         }
        
         else{

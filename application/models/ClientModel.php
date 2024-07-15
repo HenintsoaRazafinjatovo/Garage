@@ -35,7 +35,6 @@ class ClientModel extends CI_Model
         $query = $this->db->get_where('Client', array(
             'numero' => $numero,
             'type' =>$type
-            
         ));
         if($query->num_rows()==0)
         {   
@@ -47,13 +46,8 @@ class ClientModel extends CI_Model
             } catch (\Throwable $th) {
                 return ['error'=>$th->getMessage()];
             }
-           
-
         }
-        else{
             return $query->row_array();
-        }
-
     }
 }
 ?>
