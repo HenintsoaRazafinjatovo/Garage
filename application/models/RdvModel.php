@@ -48,9 +48,9 @@ class RdvModel extends CI_Model
         $newDate->modify("+$hours hours");
         return $newDate;
     }
-    public function demandeRdv($dateD,$idService)
-    {   
-        $this->load->Model('SlotModel');
+    function slotDisponibles($dateD, $idService)
+    {
+        $this->load->model('SlotModel');
         $sql = "SELECT * from Service where id_Service=$idService;";
         $query = $this->db->query($sql);
         $res = $query->row_array();
@@ -68,12 +68,36 @@ class RdvModel extends CI_Model
             }
             $slotDisponibles= $this->SlotModel->get_available_slots($dateD,$dateF);
         }
+        return [$slotDisponibles,$dateF];
+    }
+    public function demandeRdv($dateD,$idService,$idClient)
+    {   
+        $resultFunction=$this->slotDisponibles($dateD,$idService);
+        $slotDisponibles=$resultFunction[0];
+        $dateF=$resultFunction[1];
+        if(count($slotDisponibles)>0){   
+            $data=array(
+                'dateHdebut'=>$dateD,
+                'id_Service'=>$idService,
+                'id_Slot'=>$slotDisponibles[0]['id_Slot'],
+                'id_Client'=>$idClient
+            );
+            $this->insert($data);
+            $data2=array(
+                'dateDOccupe'=>$dateD,
+                'dateFOccupe'=>$dateF,
+                'id_Slot'=>$slotDisponibles[0]['id_Slot']
+            );
+            $this->SlotModel->insert("SlotOccupe",$data2);
+            $query = $this->db->get_where('Rdv',$data);
+            $rdv=$query->row_array();
+            return $rdv['id_Rdv'];
+        }
+       
         else{
             throw new Exception("Aucun slot disponible a cette date", 1);
         }
     }
-   
-
 }
 
 ?>
