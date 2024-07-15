@@ -30,7 +30,29 @@ class SlotModel extends CI_Model
     $query = $this->db->get('Slot');
     return $query->result_array();
     }
-    
+    public function get_available_slots($dateDebut, $dateFin) {
+   
+        $allSlots = $this->getAll();
+
+        $availableSlots = [];
+
+        foreach ($allSlots as $slot) {
+            $this->db->select('COUNT(*) as count');
+            $this->db->from('SlotOccupe');
+            $this->db->where('Id_Slot', $slot['Id_Slot']);
+            $this->db->where('dateDOccupe <', $dateFin);
+            $this->db->where('dateFOccupe >', $dateDebut);
+
+            $query = $this->db->get();
+            $result = $query->row();
+
+            if ($result->count == 0) {
+                $availableSlots[] = $slot['Id_Slot'];
+            }
+        }
+
+        return $availableSlots;
+    }
 
 }
 
