@@ -3,8 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Rdv extends CI_Controller {
 	
-	public function index()
+	public function index($message)
 	{
+		if(isset($message)){
+			$data['message']=$message;
+		}
 		$data['content']='Rdv';
 		$data['user']=$this->session->userdata("client");
 		$this->load->model('ServiceModel');
@@ -22,8 +25,19 @@ class Rdv extends CI_Controller {
 
 		$this->load->model('RdvModel');
 		try{
-			$test=$this->RdvModel->demandeRdv($dateHDebut,$idService,$idClient);
-
+			$idRdv=$this->RdvModel->demandeRdv($dateHDebut,$idService,$idClient);
+			redirect("rdv/devispdf/$idRdv");
 		}
+		catch(\Throwable $e){
+			$mess=$e->getMessage();
+			redirect("rdv/index/$mess");
+		}
+	}
+
+	public function devispdf($idRdv){
+		$this->load->library("pdfmodel");
+		$this->pdfmodel->AddPage();
+		$this->pdfmodel->Body($idRdv);
+		$this->pdfmodel->Output();
 	}
 }
