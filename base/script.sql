@@ -1,8 +1,9 @@
 create database garage;
+use garage;
 CREATE TABLE Slot(
    Id_Slot INT AUTO_INCREMENT,
    intitule CHAR(1) ,
-   PRIMARY KEY(Id_Slots)
+   PRIMARY KEY(Id_Slot)
 );
 
 CREATE TABLE Service(

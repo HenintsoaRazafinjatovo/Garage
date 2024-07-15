@@ -4,7 +4,7 @@
                 <h1>Prendre rendez-vous</h1>
             </div>
             <div>
-                <form>
+                <form action="<?php echo site_url('rdv/demandeRdv')?>" meyhod="post">
                     <div class="row mb-3">
                         <label for="inputDate" class="col-sm-2 col-form-label">Date </label>
                         <div class="col-sm-10">
@@ -21,11 +21,14 @@
                     <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Type de service</label>
                     <div class="col-sm-10">
-                        <select class="form-select"name="type" aria-label="Default select example">
+                        <select class="form-select" name="type" aria-label="Default select example">
                         <option selected>Choisissez votre type de service</option>
-                        <option value="1">Simple</option>
-                        <option value="2">Standard</option>
-                        <option value="3">Complexe</option>
+                        <?php foreach ($services as $key => $value) { ?>
+                            
+                        
+                        <option value="<?php echo $value['Id_Client'] ?>"><?php echo $value['intitule'] ?></option>
+                        
+                        <?php } ?>
                         </select>
                     </div>
                     <div class="row mb-3">
