@@ -6,7 +6,7 @@ class Rdv extends CI_Controller {
         parent::__construct();
 
         if(!($this->session->userdata('admin') || $this->session->userdata('client'))){
-            redirect('admin');
+            redirect('client');
         }
     }
 	public function index()
