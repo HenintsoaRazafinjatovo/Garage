@@ -29,8 +29,8 @@ class ServiceModel extends CI_Model
     public function getAll(){
         $query = $this->db->get('Service');
         $result= $query->result_array();
-        foreach ($result as $value) {
-            $value['duree']=$this->formatHour($value['duree']);
+        foreach ($result as $key=>$value) {
+            $result[$key]['duree']=$this->formatHour($value['duree']);
         }
 
         return $result;
