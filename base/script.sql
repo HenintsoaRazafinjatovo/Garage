@@ -41,3 +41,5 @@ CREATE TABLE Paiement(
    UNIQUE(Id_Rdv),
    FOREIGN KEY(Id_Rdv) REFERENCES Rdv(Id_Rdv)
 );
+
+---Views --------------------------------
