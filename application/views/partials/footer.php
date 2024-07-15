@@ -1,6 +1,6 @@
 <footer id="footer" class="footer">
             <div class="copyright">
-            &copy; Copyright <strong><span>RAKOTOARITAHINA Labarre Itokiana Teddy-RAZAFINJATOVO Henintsoa nicole-RAKOTOARY Mirado Kevin</span></strong>. ETU2495-ETU2628-ETU2741
+            &copy; Copyright <strong><span>RAKOTOARITAHINA Labarre Itokiana Teddy-RAZAFINJATOVO Henintsoa Nicole-RAKOTOARY Mirado Kevin</span></strong>. ETU2495-ETU2628-ETU2741
             </div>
             <div class="credits">
             <!-- All the links in the footer should remain intact. -->

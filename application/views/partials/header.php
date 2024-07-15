@@ -33,6 +33,7 @@
 
             <div class="d-flex align-items-center justify-content-between">
             <a href="#" class="logo d-flex align-items-center">
+            <i class="bi bi-list toggle-sidebar-btn"></i>
                 <img src="<?php echo base_url( "assets/img/logo.png") ?>" alt="">
                 
             </a>
