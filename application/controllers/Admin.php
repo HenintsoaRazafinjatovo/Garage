@@ -11,7 +11,7 @@ class Admin extends CI_Controller {
 	public function verifLogin(){
 		$email=$this->input->post("email");
 		$motDePasse=$this->input->post("password");
-		$this->load->model('adminModel','client');
+		$this->load->model('adminModel');
 
 		$result=$this->adminModel->verifLogin($email,$motDePasse);
 
