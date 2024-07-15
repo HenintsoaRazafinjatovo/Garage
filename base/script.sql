@@ -1,6 +1,6 @@
 create database garage;
-CREATE TABLE Slots(
-   Id_Slots INT AUTO_INCREMENT,
+CREATE TABLE Slot(
+   Id_Slot INT AUTO_INCREMENT,
    intitule CHAR(1) ,
    PRIMARY KEY(Id_Slots)
 );
@@ -26,11 +26,11 @@ CREATE TABLE Rdv(
    dateHdebut DATETIME,
    Id_Service INT NOT NULL,
    Id_Client INT NOT NULL,
-   Id_Slots INT NOT NULL,
+   Id_Slot INT NOT NULL,
    PRIMARY KEY(Id_Rdv),
    FOREIGN KEY(Id_Service) REFERENCES Service(Id_Service),
    FOREIGN KEY(Id_Client) REFERENCES Client(Id_Client),
-   FOREIGN KEY(Id_Slots) REFERENCES Slots(Id_Slots)
+   FOREIGN KEY(Id_Slot) REFERENCES Slot(Id_Slot)
 );
 
 CREATE TABLE Paiement(
@@ -40,6 +40,14 @@ CREATE TABLE Paiement(
    PRIMARY KEY(Id_Paiement),
    UNIQUE(Id_Rdv),
    FOREIGN KEY(Id_Rdv) REFERENCES Rdv(Id_Rdv)
+);
+
+CREATE TABLE SlotOccupe(
+    Id_SlotOccupe INT AUTO_INCREMENT,
+    dateDOccupe DATETIME,
+    dateFOccupe DATETIME,
+    Id_Slot INT NOT NULL,
+    FOREIGN KEY(Id_Slot) REFERENCES
 );
 
 ---Views --------------------------------

@@ -45,7 +45,7 @@ class ClientModel extends CI_Model
                     'type' => $type
                 ));
             } catch (\Throwable $th) {
-                return ['Error'=>$th->getMessage()];
+                return ['error'=>$th->getMessage()];
             }
            
 
