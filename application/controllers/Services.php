@@ -11,7 +11,9 @@ class Services extends CI_Controller {
             $data['idUpdate']=$idUpdate;
         }
         $data['services'] = $this->ServiceModel->getAll();
-        $this->load->view('Service',$data);
+
+        $data['content']='Services';
+        $this->load->view('partials/template',$data);
 		
 	}
     public function insert(){
@@ -22,7 +24,7 @@ class Services extends CI_Controller {
             'prix' => $this->input->post('prix')
         );
         $this->ServiceModel->insert($data);
-        $this->load->view('Service');
+        redirect('services');
     }
     public function update($id){
         $this->load->model("ServiceModel");
@@ -33,14 +35,12 @@ class Services extends CI_Controller {
             'prix' => $this->input->post('prix')
         );
         $this->ServiceModel->update($id,$data);
-        $this->load->view('Service');
-
+        redirect('services');
     }
     public function delete($id){
         $this->load->model("ServiceModel");
         $this->ServiceModel->delete($id);
-        $this->load->view('Service');
-
+        redirect('services');
     }
     
 

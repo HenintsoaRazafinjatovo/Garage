@@ -16,12 +16,6 @@
             <div>
                 <form action="<?php echo site_url($action)?>" method="post">
                     <div class="row mb-3">
-                        <label for="inputDate" class="col-sm-2 col-form-label">Id </label>
-                        <div class="col-sm-10">
-                            <input type="number" name="id" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
                         <label for="inputTime" class="col-sm-2 col-form-label">Intitule</label>
                         <div class="col-sm-10">
                             <input type="text" name="intitule" class="form-control">
@@ -30,13 +24,13 @@
                     <div class="row mb-3">
                         <label for="inputDate" class="col-sm-2 col-form-label">Duree </label>
                         <div class="col-sm-10">
-                            <input type="number" name="duree" class="form-control">
+                            <input type="text" name="duree" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputDate" class="col-sm-2 col-form-label">Prix </label>
                         <div class="col-sm-10">
-                            <input type="number" name="prix" class="form-control">
+                            <input type="text" name="prix" class="form-control">
                         </div>
                     </div>
                     

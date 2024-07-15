@@ -32,7 +32,7 @@ class AdminModel extends CI_Model
     }
     public function verifLogin($email, $mdp)
     {
-        $query = $this->db->get_where('utilisateur', array(
+        $query = $this->db->get_where('Admin', array(
             'email' => $email,
             'mdp' => md5($mdp),
             
