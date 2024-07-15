@@ -1,33 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Client extends CI_Controller {
+class Admin extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('Login');
+		$this->load->view('LoginBackOffice');
 	}
 
 	public function verifLogin(){
 		$email=$this->input->post("email");
-		$motDePasse=$this->input->post("motDePasse");
-		$this->load->model('clientModel','client');
+		$motDePasse=$this->input->post("password");
+		$this->load->model('adminModel','client');
 
-		$result=$this->client->loginOrSignUp($email,$type);
+		$result=$this->adminModel->verifLogin($email,$motDePasse);
 
 		if (isset($result['error'])) {
-			$this->load->view('Login',$result);
+			$this->load->view('LoginBackOffice',$result);
 		}
 		else{
 			/*Page d'accueil*/
-			$this->session->set_userdata("client",$result);
-			redirect("rdv");
+			$this->session->set_userdata("admin",$result);
+			redirect("devis/listeRendezVous");
 		}
-	}
-
-	public function disconnect(){
-		$this->session->sess_destroy();
-
-		redirect("client/login");
 	}
 }

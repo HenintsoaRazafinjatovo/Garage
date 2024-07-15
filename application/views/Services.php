@@ -1,9 +1,20 @@
+<?php
+    if(isset($idUpdate)){
+        $action="services/update/$idUpdate";
+    }
+    
+    else{
+        $action="services/insert";
+    }
+
+?>
+
 <main id="main" class="main">
             <div class="pagetitle">
                 <h1>Services</h1>
             </div>
             <div>
-                <form action="<?php echo site_url(' ')?>" meyhod="post">
+                <form action="<?php echo site_url($action)?>" method="post">
                     <div class="row mb-3">
                         <label for="inputDate" class="col-sm-2 col-form-label">Id </label>
                         <div class="col-sm-10">
@@ -49,16 +60,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row"><?php echo ?></th>
-                            <td><?php echo ?></td>
-                            <td><?php echo ?></td>
-                            <td><?php echo ?></td>
-                            <td>
-                                <a href="<?php echo ?>" class="btn btn-warning btn-sm">Modifier</a>
-                                <a href="<?php echo ?>" class="btn btn-danger btn-sm">Supprimer</a>
-                            </td>
-                        </tr>
+                        <?php foreach ($services as $value) { ?>
+                            <tr>
+                                <th scope="row"><?php echo $value['Id_Service']?></th>
+                                <td><?php echo $value['intitule'] ?></td>
+                                <td><?php echo $value['duree'] ?></td>
+                                <td><?php echo $value['prix']?></td>
+                                <td>
+                                    <a href="<?php echo site_url('services?idUpdate='.$value['Id_Service']) ?>" class="btn btn-warning btn-sm">Modifier</a>
+                                    <a href="<?php echo site_url('services/delete/'.$value['Id_Service']) ?>" class="btn btn-danger btn-sm">Supprimer</a>
+                                </td>
+                            </tr>
+
+                        <?php } ?>
                         </tbody>
                     </table>
                 </div>
