@@ -28,7 +28,6 @@ class Client extends CI_Controller {
 
 	public function disconnect(){
 		$this->session->sess_destroy();
-
-		redirect("client/login");
+		redirect("client");
 	}
 }
