@@ -11,6 +11,7 @@ class Rdv extends CI_Controller {
         }
 		$data['content']='Rdv';
 		$data['user']=$this->session->userdata("client");
+		
 		$this->load->model('ServiceModel');
 		$data['services']=$this->ServiceModel->getAll();
 		$this->load->view('partials/template',$data);

@@ -5,16 +5,15 @@ class Client extends CI_Controller {
 	
 	public function index()
 	{
-		// echo 'TAMERE';
 		$this->load->view('Login');
 	}
 
 	public function verifLogin(){
-		$numero=$this->input->post("numero");
-		$type=$this->input->post("type");
+		$email=$this->input->post("email");
+		$motDePasse=$this->input->post("motDePasse");
 		$this->load->model('clientModel','client');
 
-		$result=$this->client->loginOrSignUp($numero,$type);
+		$result=$this->client->loginOrSignUp($email,$type);
 
 		if (isset($result['error'])) {
 			$this->load->view('Login',$result);
