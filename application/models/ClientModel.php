@@ -55,7 +55,5 @@ class ClientModel extends CI_Model
         }
 
     }
-
 }
-
 ?>
