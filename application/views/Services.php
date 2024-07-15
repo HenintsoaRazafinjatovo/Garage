@@ -1,6 +1,15 @@
 <?php
-    if(isset($idUpdate)){
+    $intitule="";
+    $duree="";
+    $prix="";
+
+    if(isset($toUpdate)){
+        $idUpdate=$toUpdate['Id_Service'];
         $action="services/update/$idUpdate";
+        
+        $intitule=$toUpdate['intitule'];
+        $duree=$toUpdate['duree'];
+        $prix=$toUpdate['prix'];
     }
     
     else{
@@ -18,19 +27,19 @@
                     <div class="row mb-3">
                         <label for="inputTime" class="col-sm-2 col-form-label">Intitule</label>
                         <div class="col-sm-10">
-                            <input type="text" name="intitule" class="form-control">
+                            <input type="text" name="intitule" class="form-control" value="<?php echo $intitule ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputDate" class="col-sm-2 col-form-label">Duree </label>
                         <div class="col-sm-10">
-                            <input type="text" name="duree" class="form-control">
+                            <input type="text" name="duree" class="form-control" value="<?php echo $duree ?>>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputDate" class="col-sm-2 col-form-label">Prix </label>
                         <div class="col-sm-10">
-                            <input type="text" name="prix" class="form-control">
+                            <input type="text" name="prix" class="form-control" value="<?php echo $prix ?>>
                         </div>
                     </div>
                     

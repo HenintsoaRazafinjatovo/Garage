@@ -8,7 +8,7 @@ class Services extends CI_Controller {
 		$this->load->model("ServiceModel");
         $idUpdate=$this->input->get("idUpdate");
         if(isset($idUpdate)){
-            $data['idUpdate']=$idUpdate;
+            $data['toUpdate']=$this->ServiceModel->getById($idUpdate);
         }
         $data['services'] = $this->ServiceModel->getAll();
 
