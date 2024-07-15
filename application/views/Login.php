@@ -68,7 +68,7 @@
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Numéro</label>
-                        <input type="text" name="numéro" class="form-control" id="numéro" required>
+                        <input type="text" name="numero" class="form-control" id="numero" required>
                         <div class="invalid-feedback">Veuillez entrer votre numéro.</div>
                       </div>
                     </div>

@@ -18,10 +18,10 @@ class Client extends CI_Controller {
 		if (isset($result['error'])) {
 			$this->load->view('Login',$result);
 		}
-
 		else{
 			/*Page d'accueil*/
 			$this->session->set_userdata("client",$result);
+			redirect("rdv");
 		}
 	}
 }
