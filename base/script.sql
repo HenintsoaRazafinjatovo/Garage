@@ -65,4 +65,4 @@ INSERT INTO Service (intitule, duree, prix) VALUES
 ('Reparation standard', 2, 250000),
 ('Complexe', 8, 800000),
 ('Entretien', 2.5, 300000);
-
+ INSERT INTO Admin (email, mdp) VALUES ('admin@gmail.com', 'adminmdp');
