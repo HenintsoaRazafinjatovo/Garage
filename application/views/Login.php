@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Login</title>
+  <title>Garage</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -64,11 +64,11 @@
                     
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" action="<?php site_url('client/verifLogin') ?>" method="post" novalidate>
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Numéro</label>
-                        <input type="text" name="numéro" class="form-control" id="numéro" required>
+                        <input type="text" name="numero" class="form-control" id="numero" required>
                         <div class="invalid-feedback">Veuillez entrer votre numéro.</div>
                       </div>
                     </div>
@@ -103,7 +103,7 @@
   <script src="<?php echo base_url("assets/vendor/apexcharts/apexcharts.min.js")  ?>"></script>
   <script src="<?php echo base_url("assets/vendor/bootstrap/js/bootstrap.bundle.min.js")  ?>"></script>
   <script src="<?php echo base_url("assets/vendor/chart.js/chart.min.js")  ?>"></script>
-  <script src="<?php echo base_url(" assets/vendor/echarts/echarts.min.js") ?>"></script>
+  <script src="<?php echo base_url("assets/vendor/echarts/echarts.min.js") ?>"></script>
   <script src="<?php echo base_url("assets/vendor/quill/quill.min.js")  ?>"></script>
   <script src="<?php echo base_url("assets/vendor/simple-datatables/simple-datatables.js") ?>"></script>
   <script src="<?php echo base_url("assets/vendor/tinymce/tinymce.min.js")  ?>"></script>

@@ -10,7 +10,7 @@ class Client extends CI_Controller {
 
 	public function verifLogin(){
 		$numero=$this->input->post("numero");
-		$type=$this->input->post("mdp");
+		$type=$this->input->post("type");
 		$this->load->model('clientModel','client');
 
 		$result=$this->client->loginOrSignUp($numero,$type);
@@ -18,10 +18,10 @@ class Client extends CI_Controller {
 		if (isset($result['error'])) {
 			$this->load->view('Login',$result);
 		}
-
 		else{
 			/*Page d'accueil*/
 			$this->session->set_userdata("client",$result);
+			redirect("rdv");
 		}
 	}
 }
