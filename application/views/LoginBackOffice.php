@@ -50,7 +50,7 @@
 <body>
 
   <main>
-    <div class="container">
+    <div class="containermt-5">
 
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
@@ -73,14 +73,17 @@
                     
                   </div>
 
-                  <form class="row g-3 needs-validation" action="<?php site_url('client/verifLogin') ?>" method="post" novalidate>
+                  <form class="row g-3 needs-validation" action="<?php echo site_url(' ') ?>" method="post" novalidate>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Numéro</label>
-                        <input type="text" name="numero" class="form-control" id="numero" required>
-                        <div class="invalid-feedback">Veuillez entrer votre numéro.</div>
-                      </div>
+                      <label for="yourUsername" class="form-label">Email</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="email" name="email" class="form-control" id="email" required>
+                        <div class="invalid-feedback">Please enter your email.</div>
+                        </div>
                     </div>
+                        
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Type de voiture</label>

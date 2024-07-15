@@ -1,3 +1,4 @@
+
 <aside id="sidebar" class="sidebar">
 
             <ul class="sidebar-nav" id="sidebar-nav">
@@ -6,6 +7,12 @@
                     <a class="nav-link " href="#">
                     <i class="bi bi-grid"></i>
                     <span>Rendez-vous</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">
+                    <i class="bi bi-grid"></i>
+                    <span>Services</span>
                     </a>
                 </li>
             </ul>
