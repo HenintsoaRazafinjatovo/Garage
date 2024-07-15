@@ -50,7 +50,11 @@ CREATE TABLE SlotOccupe(
     Id_Slot INT NOT NULL,
     FOREIGN KEY(Id_Slot)  REFERENCES Slot(Id_Slot)
 );
-
+CREATE TABLE Admin(
+   id_Admin INT PRIMARY KEY AUTO_INCREMENT,
+   email VARCHAR(100) NOT NULL,
+   mdp VARCHAR(50)
+);
 ---Data--------------------------------
 INSERT INTO Slot (intitule) VALUES
 ('A'),
