@@ -12,7 +12,7 @@
                     </div>
 
                     <div class="row mb-3">
-                    <label for="inputNumber" class="col-sm-2 col-form-label">Services</label>
+                    <label for="inputNumber" class="col-sm-2 col-form-label">Travaux</label>
                     <div class="col-sm-10">
                         <input class="form-control" type="file" id="formFile">
                     </div>
