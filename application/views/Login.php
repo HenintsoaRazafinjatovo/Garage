@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,7 +74,7 @@
                     
                   </div>
 
-                  <form class="row g-3 needs-validation" action="<?php site_url('client/verifLogin') ?>" method="post" novalidate>
+                  <form class="row g-3 needs-validation" action="<?php echo site_url('client/verifLogin') ?>" method="post" novalidate>
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Numéro</label>

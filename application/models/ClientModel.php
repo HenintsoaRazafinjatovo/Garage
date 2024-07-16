@@ -36,18 +36,19 @@ class ClientModel extends CI_Model
             'numero' => $numero,
             'type' =>$type
         ));
+        var_dump($query->num_rows());
         if($query->num_rows()==0)
         {   
-            try {
-                $this->insert(array(
-                    'numero' => $numero,
-                    'type' => $type
-                ));
-            } catch (\Throwable $th) {
-                return ['error'=>$th->getMessage()];
-            }
+            $this->insert(array(
+                'numero' => $numero,
+                'type' => $type
+            ));
+            $query = $this->db->get_where('Client', array(
+                'numero' => $numero,
+                'type' =>$type
+            ));
         }
-            return $query->row_array();
+        return $query->row_array();
     }
 }
 ?>
