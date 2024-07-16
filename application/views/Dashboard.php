@@ -30,6 +30,28 @@
               </script>
               <!-- End Doughnut CHart -->
                <div>
+                    <form action="<?php echo site_url('')?>" meyhod="post">
+                        <div class="row mb-3">
+                            <span>Entrer deux dates</span>
+                            <label for="inputDate" class="col-sm-2 col-form-label">Date 1</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="dateRdv" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputDate" class="col-sm-2 col-form-label">Date 2</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="dateRdv" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Valider</button>
+                        </div>
+                    </div>
+                    </form>
+               </div>
+               <div>
                <table class="table">
                     <thead>
                     <tr>
@@ -41,7 +63,7 @@
                     <tbody>
                     <?php foreach ($rdv as $value) { ?>
                         <tr>
-                            <th scope="row"><?php echo ?></th>
+                            <td ><?php echo ?></td>
                             <td><?php echo  ?></td>
                             
                         </tr>
