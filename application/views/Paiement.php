@@ -3,9 +3,9 @@
                 <h1>Paiement</h1>
             </div>
             <div>
-                <form action="<?php echo site_url('devis/insertPaiement')?>" meyhod="post">
+                <form action="<?php echo site_url('devis/insertPaiement/'.$value['Id_Rdv'])?>" method="post">
                     <div class="row mb-3">
-                        <label for="inputTime" class="col-sm-2 col-form-label">Date</label>
+                        <label for="inputTime" class="col-sm-2 col-form-label">Date paiement</label>
                         <div class="col-sm-10">
                             <input type="date" name="date" class="form-control">
                         </div>
