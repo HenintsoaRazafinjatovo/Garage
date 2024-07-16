@@ -27,42 +27,65 @@
 
         <!-- Template Main CSS File -->
         <link href= "<?php echo base_url( "assets/css/style.css") ?>" rel= "stylesheet" >
-        <link href= "<?php echo base_url( "assets/css/Calendrier.css") ?>" rel= "stylesheet" >
-        <script src='<?php echo base_url("assets/fullcalendar-6.1.15/dist/index.global.js") ?>' ></script>
+        <script src='<?php echo base_url("assets/vendor/fullcalendar-6.1.15/dist/index.global.js") ?>' ></script>
+        
         <script>
 
             document.addEventListener('DOMContentLoaded', function() {
-                var calendarEl = document.getElementById('calendar');
+                        var calendarEl = document.getElementById('calendar');
 
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialDate: '2023-01-12',
-                initialView: 'timeGridWeek',
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-                },
-                height: 'auto',
-                navLinks: true, // can click day/week names to navigate views
-                editable: true,
-                selectable: true,
-                selectMirror: true,
-                nowIndicator: true,
-                <?php  ?>
-                events: [
-                    
-                    {
-                    groupId: 999,
-                    title: 'Repeating Event',
-                    start: '2023-01-09T16:00:00',
-                    url: '<?php echo site_url(""); ?>',
-                    }
-                    
-                ]
+                        function fetchRdv() {
+                            return new Promise((resolve, reject) => {
+                                $.ajax({
+                                    url: '<?php echo base_url()?>', // Remplacez par l'URL de votre API
+                                    method: 'GET',
+                                    dataType: 'json',
+                                    success: function(data) {
+                                        resolve(data);
+                                    },
+                                    error: function(jqXHR, textStatus, errorThrown) {
+                                        reject(new Error('Erreur lors de la récupération des événements: ' + textStatus));
+                                    }
+                                });
+                            });
+                        }
+
+                        function getRdv(rdvList) {
+                            let events = [];
+
+                            rdvList.forEach(event => {
+                                events.push({
+                                    title: event.intitule,
+                                    start: event.hdebut
+                                });
+                            });
+
+                            return events;
+                        }
+
+                        fetchRdv().then(rdvList => {
+                            var calendar = new FullCalendar.Calendar(calendarEl, {
+                                initialDate: '2024-07-16',
+                                initialView: 'timeGridWeek',
+                                headerToolbar: {
+                                    left: 'prev,next today',
+                                    center: 'title',
+                                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                                },
+                                height: 'auto',
+                                navLinks: true, // can click day/week names to navigate views
+                                editable: true,
+                                selectable: true,
+                                selectMirror: true,
+                                nowIndicator: true,
+                                events: getRdv(rdvList) // Charger les événements ici
+                            });
+
+                            calendar.render();
+                        }).catch(error => {
+                            console.error(error);
+                        });
                 });
-
-                calendar.render();
-            });
 
         </script>
     </head>

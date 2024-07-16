@@ -5,9 +5,9 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Date debut</th>
-                <th scope="col">Id Service</th>
-                <th scope="col">Id Client</th>
-                <th scope="col">Id slot</th>
+                <th scope="col">Service</th>
+                <th scope="col">Client</th>
+                <th scope="col">Slot</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -16,9 +16,9 @@
                 <tr>
                     <th scope="row"><?php echo $value['Id_Rdv']?></th>
                     <td><?php echo $value['dateHdebut'] ?></td>
-                    <td><?php echo $value['Id_Service'] ?></td>
-                    <td><?php echo $value['Id_Client']?></td>
-                    <td><?php echo $value['Id_Slot']?></td>
+                    <td><?php echo $value['Service'] ?></td>
+                    <td><?php echo $value['Client']?></td>
+                    <td><?php echo $value['Slot']?></td>
                     <td>
                         <a href="<?php echo site_url('devis/paiement/'.$value['Id_Rdv']) ?>" class="btn btn-warning btn-sm">Payer</a>
                     </td>
