@@ -10,9 +10,9 @@ class PaiementModel extends CI_Model
     public function insert($data){
         $this->load->model('RdvModel');
         $rdv=$this->RdvModel->getById($data['Id_Rdv']);
-        $dateRdv=new DateTime($rdv['dateHDebut']);
+        $dateRdv=new DateTime($rdv['dateHdebut']);
 
-        if($dateRdv>$data['datePaiement']){
+        if($dateRdv>new DateTime($data['datePaiement'])){
             throw new Exception("Date de paiement invalide", 1);
         }
         

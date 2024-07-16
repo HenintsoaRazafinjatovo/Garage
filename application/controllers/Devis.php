@@ -17,7 +17,19 @@ class Devis extends CI_Controller {
         }
 		
 		$this->load->model('RdvModel');
-		$data['rdvs']=$this->RdvModel->getAll();
+		$this->load->model('ServiceModel');
+		$this->load->model('SlotModel');
+
+		$data['rdv']=$this->RdvModel->getAll();
+
+        foreach ($data['rdv'] as $key => $value) {
+            $data['rdv'][$key]['service']=$this->ServiceModel->getById($value['Id_Service'])['intitule'];
+        }
+
+        foreach ($data['rdv'] as $key => $value) {
+            $data['rdv'][$key]['slot']=$this->SlotModel->getById($value['Id_Slot'])['intitule'];
+        }
+        
         $data['content']='ListDevis';
 		$this->load->view('partials/template',$data);
 	}

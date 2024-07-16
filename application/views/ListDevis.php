@@ -16,9 +16,9 @@
                 <tr>
                     <th scope="row"><?php echo $value['Id_Rdv']?></th>
                     <td><?php echo $value['dateHdebut'] ?></td>
-                    <td><?php echo $value['Service'] ?></td>
-                    <td><?php echo $value['Client']?></td>
-                    <td><?php echo $value['Slot']?></td>
+                    <td><?php echo $value['service'] ?></td>
+                    <td><?php echo $value['Id_Client']?></td>
+                    <td><?php echo $value['slot']?></td>
                     <td>
                         <a href="<?php echo site_url('devis/paiement/'.$value['Id_Rdv']) ?>" class="btn btn-warning btn-sm">Payer</a>
                     </td>
