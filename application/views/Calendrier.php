@@ -26,7 +26,7 @@
           events:res,
           dateClick: function(info) {
             var dt=info.dateStr
-            window.location.href="<?php echo site_url("rdv/formormRdv")?>"+dt
+            window.location.href="<?php echo site_url("rdv/formRdv")?>"+dt
             
           }
         });
