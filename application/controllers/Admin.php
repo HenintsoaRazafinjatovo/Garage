@@ -20,7 +20,7 @@ class Admin extends CI_Controller {
 		else{
 			/*Page d'accueil*/
 			$this->session->set_userdata("admin",$result);
-			redirect("devis/listeRendezVous");
+			redirect("rdv/calendar");
 		}
 	}
 }

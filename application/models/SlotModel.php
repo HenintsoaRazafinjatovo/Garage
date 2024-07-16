@@ -63,7 +63,26 @@ class SlotModel extends CI_Model
 
         return $availableSlots;
     }
+    public function etatSlot($date)
+    {
+        $slots=$this->getAll();
 
+        foreach ($slots as $key=>$value) {
+            $id= $value['Id_Slot'];
+            $sql="Select * from SlotOccupe where Id_Slot = $id and('$date'>= dateDOccupe and '$date'<= dateFOccupe );";
+            $sql=$this->db->query($sql);
+            $result = $sql->result_array();
+            if(count($result)>0)
+            {
+                $slots[$key]['etat']='occupe';
+            }
+            else
+            {
+                $slots[$key]['etat']='libre';
+            }
+        }
+        return $slots;
+    }
 }
 
 ?>

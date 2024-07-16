@@ -89,12 +89,11 @@
                       <div class="invalid-feedback">Veuillez entrer votre type de voiture.</div>
                     </div>
 
-                    
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
                     <div class="col-12">
-                      <p > <a href="<?php echo site_url(''); ?>">Login admin.</a></p>
+                      <p > <a href="<?php echo site_url('admin'); ?>">Login admin</a></p>
                     </div>
                   </form>
 

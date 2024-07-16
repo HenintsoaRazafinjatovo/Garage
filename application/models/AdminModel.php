@@ -44,7 +44,17 @@ class AdminModel extends CI_Model
         throw new Exception("Login introuvable", 1);
     }
     
-
+    public function suppressiondonnees()
+    {
+        $query="delete from Paiement";
+        $this->db->query($query);
+        $query="delete from SlotOccupe";
+        $this->db->query($query);
+        $query="delete from Rdv";
+        $this->db->query($query);
+        $query="delete from Client";
+        $this->db->query($query);
+    }
 }
 
 ?>

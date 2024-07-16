@@ -68,3 +68,10 @@ INSERT INTO Service (intitule, duree, prix) VALUES
  INSERT INTO Admin (email, mdp) VALUES ('admin@gmail.com', md5('adminmdp'));
  --------Alter TABLE------------------------------
  ALTER TABLE Rdv ADD COLUMN prix DOUBLE;
+ 
+Create or replace view clientsTreatedPerDay as SELECT DATE(r.dateHdebut) AS treatment_date, COUNT(DISTINCT r.Id_Client) AS clients_treated
+FROM Rdv r
+JOIN SlotOccupe s ON r.Id_Slot=s.Id_Slot
+GROUP BY treatment_date;
+
+

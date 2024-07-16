@@ -9,6 +9,13 @@ class Devis extends CI_Controller {
             redirect('client');
         }
     }
+
+    public function deleteDatas(){
+		$this->load->model('AdminModel');
+        $this->AdminModel->suppressiondonnees();
+        redirect("rdv/calendar");
+	}
+
 	public function index()
 	{
 		$message=$this->input->get('message');
