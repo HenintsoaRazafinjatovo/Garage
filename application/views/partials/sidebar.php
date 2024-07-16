@@ -15,5 +15,11 @@
                     <span>Services</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">
+                    <i class="bi bi-grid"></i>
+                    <span>Liste devis</span>
+                    </a>
+                </li>
             </ul>
 </aside>

@@ -27,15 +27,53 @@
 
         <!-- Template Main CSS File -->
         <link href= "<?php echo base_url( "assets/css/style.css") ?>" rel= "stylesheet" >
+        <link href= "<?php echo base_url( "assets/css/Calendrier.css") ?>" rel= "stylesheet" >
+        <script src='<?php echo base_url("assets/fullcalendar-6.1.15/dist/index.global.js") ?>' ></script>
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialDate: '2023-01-12',
+                initialView: 'timeGridWeek',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                },
+                height: 'auto',
+                navLinks: true, // can click day/week names to navigate views
+                editable: true,
+                selectable: true,
+                selectMirror: true,
+                nowIndicator: true,
+                <?php  ?>
+                events: [
+                    
+                    {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2023-01-09T16:00:00',
+                    url: '<?php echo site_url(""); ?>',
+                    }
+                    
+                ]
+                });
+
+                calendar.render();
+            });
+
+        </script>
     </head>
     <body>
         <header id="header" class="header fixed-top d-flex align-items-center">
 
             <div class="d-flex align-items-center justify-content-between">
             <a href="#" class="logo d-flex align-items-center">
-            <i class="bi bi-list toggle-sidebar-btn"></i>
+            
                 <img src="<?php echo base_url( "assets/img/logo.png") ?>" alt="">
-                
+                <i class="bi bi-list toggle-sidebar-btn"></i>
             </a>
             <div>
                 <ul>
