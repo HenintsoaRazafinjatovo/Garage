@@ -3,7 +3,7 @@
         <h1>Import donnees</h1>
     </div>
             <div>
-                <form action="<?php echo site_url('')?>" meyhod="post">
+                <form action="<?php echo site_url('')?>" method="post">
                     <div class="row mb-3">
                     <label for="inputNumber" class="col-sm-2 col-form-label">Services</label>
                     <div class="col-sm-10">

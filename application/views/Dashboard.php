@@ -35,13 +35,13 @@
                             <span>Entrer deux dates</span>
                             <label for="inputDate" class="col-sm-2 col-form-label">Date 1</label>
                             <div class="col-sm-10">
-                                <input type="date" name="dateRdv" class="form-control">
+                                <input type="date" name="date1" class="form-control">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputDate" class="col-sm-2 col-form-label">Date 2</label>
                             <div class="col-sm-10">
-                                <input type="date" name="dateRdv" class="form-control">
+                                <input type="date" name="date2" class="form-control">
                             </div>
                         </div>
                         <div class="row mb-3">

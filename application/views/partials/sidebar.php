@@ -36,6 +36,12 @@
                 <li class="nav-item">
                     <a class="nav-link " href="#">
                     <i class="bi bi-grid"></i>
+                    <span>Liste slot</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">
+                    <i class="bi bi-grid"></i>
                     <span>Supprimer donnees</span>
                     </a>
                 </li>
