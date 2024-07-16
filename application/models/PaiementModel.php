@@ -8,6 +8,14 @@ class PaiementModel extends CI_Model
     }
 
     public function insert($data){
+        $this->load->model('RdvModel');
+        $rdv=$this->RdvModel->getById($data['Id_Rdv']);
+        $dateRdv=new DateTime($rdv['dateHDebut']);
+
+        if($dateRdv>$data['datePaiement']){
+            throw new Exception("Date de paiement invalide", 1);
+        }
+        
         return $this->db->insert('Paiement',$data);
     }
 
@@ -27,11 +35,9 @@ class PaiementModel extends CI_Model
     }
 
     public function getAll(){
-    $query = $this->db->get('Paiement');
-    return $query->result_array();
+        $query = $this->db->get('Paiement');
+        return $query->result_array();
     }
-    
-
 }
 
 ?>
