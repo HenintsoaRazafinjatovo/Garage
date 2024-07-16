@@ -76,8 +76,8 @@ class RdvModel extends CI_Model
         }
         return [$slotDisponibles,$dateF];
     }
-    public function demandeRdv($dateD,$idService,$idClient)
-    {   
+
+    public function demandeRdvGen($dateD,$idService,$idClient,$prix){
         $resultFunction=$this->slotDisponibles($dateD,$idService);
         $slotDisponibles=$resultFunction[0];
     
@@ -87,7 +87,8 @@ class RdvModel extends CI_Model
                 'dateHdebut'=>$dateD->format('Y-m-d H:i:s'),
                 'Id_Service'=>$idService,
                 'Id_Slot'=>$slotDisponibles[0]['Id_Slot'],
-                'Id_Client'=>$idClient
+                'Id_Client'=>$idClient,
+                'prix'=>$prix
             );
             $this->insert($data);
             $dateD=$dateD->format('Y-m-d H:i:s');
@@ -104,6 +105,13 @@ class RdvModel extends CI_Model
         else{
             throw new Exception("Aucun slot disponible a cette date", 1);
         }
+    }
+
+    public function demandeRdv($dateD,$idService,$idClient)
+    {   
+        $this->load->model('ServiceModel');
+        $prix=$this->ServiceModel->getById($idService)->row_array()['prix'];
+        return $this->demandeRdvGen($dateD,$idService,$idClient,$prix);
     }
 }
 

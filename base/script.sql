@@ -66,3 +66,5 @@ INSERT INTO Service (intitule, duree, prix) VALUES
 ('Complexe', 8, 800000),
 ('Entretien', 2.5, 300000);
  INSERT INTO Admin (email, mdp) VALUES ('admin@gmail.com', md5('adminmdp'));
+ --------Alter TABLE------------------------------
+ ALTER TABLE Rdv ADD COLUMN prix DOUBLE;

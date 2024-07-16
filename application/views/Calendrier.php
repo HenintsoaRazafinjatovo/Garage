@@ -4,14 +4,12 @@
 <script src='<?php echo base_url("assets/vendor/fullcalendar-6.1.15/dist/index.global.js") ?>' ></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    getRdv()
-      .then(function(events) {
-        res=[]
+        events=<?php echo $services ?>;
+        res=[];
         events.forEach((event)=>{
           res.push({
-            title:event.numero_vehicule,
-            start:event.date_rdv,
-            end:event.dt_fin
+            title:'Client '+event.Id_Client,
+            start:event.dateHdebut
           })
         })
         var calendarEl = document.getElementById('calendar');
@@ -27,17 +25,13 @@
           events:res,
           dateClick: function(info) {
             var dt=info.dateStr
-            window.location.href="<?php echo site_url("rdv/formRdv")?>"+dt
+            window.location.href="<?php echo site_url("rdv/formRdv/")?>"+dt
             
           }
         });
         calendar.render();
       })
 
-      .catch(function(reponse) {
-        alert(reponse)
-      });
-  })
 </script>
 <div id='calendar'></div>
 </main>

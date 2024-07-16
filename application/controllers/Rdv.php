@@ -47,7 +47,6 @@ class Rdv extends CI_Controller {
 	
 
 	public function insertRdv(){
-
 		$dateDebut=$this->input->get("dateRdv");
 		$heureDebut=$this->input->get("heure");
 		$idClient=$idClient['Id_Client'];
@@ -69,46 +68,40 @@ class Rdv extends CI_Controller {
 		}
 	}
 
-	public function getRdv(){
-		$idOlona=$this->session->userdata("admin");
-		$this->load->model('RdvModel');
-		$data['services']=$this->RdvModel->getAll();
-		$this->load->view('partials/template');
-	}
-
 	public function rdvInsert(){
 		$dateDebut=$this->input->get("date");
 		$heureDebut=$this->input->get("heure");
-		$idCli=$this->input->get("Id_Client");
+		$idCli=$this->input->get("client");
+		$prix=$this->input->get("prix");
+
 
 		$dateHDebut=new DateTime($dateDebut." ".$heureDebut);
 		$idService=$this->input->get("type");
-		$idSlot=$this->input->get("slot");
-		$idClient=$this->session->userdata("admin");
-		$data=array(
-			'dateHdebut'=>$dateHDebut->format('d/m/Y H:i'),
-			'Id_Service'=>$idService,
-			'Id_Client'=>$idCli,
-			'Id_Slot'=>$idSlot
-		);
-		
-		
-
 		$this->load->model('RdvModel');
-		try{
-			$idRdv=$this->RdvModel->insert($data);
-				redirect("rdv/calendar");
-		}
-		catch(\Throwable $e){
-			$mess=$e->getMessage();
-			redirect("rdv/calendar?message=$mess");
-		}
+
+		$idRdv=$this->RdvModel->demandeRdvGen($dateHDebut,$idService,$idCli,$prix);
+		redirect("rdv/calendar");
 	}
 
-	public function formRdv(){
-		$idOlona=$this->session->userdata("admin");
+	public function calendar(){
 		$this->load->model('RdvModel');
+		$data['content']='Calendrier';
+		$data['services']=$this->RdvModel->getAll();
+		$data['services']=json_encode($data['services']);
+		$this->load->view('partials/template',$data);
+		
+	}
 
+	public function formRdv($dateForm){
+		$this->load->model('SlotModel');
+		$data['slot']=$this->SlotModel->getAll();
+		$data['date']=$dateForm;
+		$this->load->model('ServiceModel');
+		$data['services']=$this->ServiceModel->getAll();
+		
+		$this->load->model('ClientModel');
+		$data['client']=$this->ClientModel->getAll();
+		$data['content']='InsertRdv';
 		$this->load->view('partials/template',$data);
 	}
 
