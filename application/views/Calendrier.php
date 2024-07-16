@@ -1,3 +1,4 @@
+<main id="main" class="main">
 <h1>Calendrier</h1>
 <script src='<?php echo base_url("assets/vendor/fullcalendar-6.1.15/dist/index.global.min.js") ?>' ></script>
 <script src='<?php echo base_url("assets/vendor/fullcalendar-6.1.15/dist/index.global.js") ?>' ></script>
