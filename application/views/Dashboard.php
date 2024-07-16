@@ -29,6 +29,27 @@
                 });
               </script>
               <!-- End Doughnut CHart -->
+               <div>
+               <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Date </th>
+                        <th scope="col">Nombre de voitures </th>
+                        
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($rdv as $value) { ?>
+                        <tr>
+                            <th scope="row"><?php echo ?></th>
+                            <td><?php echo  ?></td>
+                            
+                        </tr>
+
+                    <?php } ?>
+                    </tbody>
+                </table>
+               </div>
 
     </div>
 </main>
