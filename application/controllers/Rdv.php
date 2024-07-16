@@ -2,7 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Rdv extends CI_Controller {
-	
+	public function __construct() {
+        parent::__construct();
+
+        if(!($this->session->userdata('admin') || $this->session->userdata('client'))){
+            redirect('client');
+        }
+    }
 	public function index()
 	{
 		$message=$this->input->get('message');
@@ -11,6 +17,7 @@ class Rdv extends CI_Controller {
         }
 		$data['content']='Rdv';
 		$data['user']=$this->session->userdata("client");
+		
 		$this->load->model('ServiceModel');
 		$data['services']=$this->ServiceModel->getAll();
 		$this->load->view('partials/template',$data);
@@ -35,6 +42,67 @@ class Rdv extends CI_Controller {
 			$mess=$e->getMessage();
 			redirect("rdv/index?message=$mess");
 		}
+	}
+
+	
+
+	public function insertRdv(){
+		$dateDebut=$this->input->get("dateRdv");
+		$heureDebut=$this->input->get("heure");
+		$idClient=$idClient['Id_Client'];
+
+		$dateHDebut=new DateTime($dateDebut." ".$heureDebut);
+		$idService=$this->input->get("type");
+		$idClient=$this->session->userdata("client");
+		
+		
+
+		$this->load->model('RdvModel');
+		try{
+			$idRdv=$this->RdvModel->demandeRdv($dateHDebut,$idService,$idClient);
+			 redirect("rdv/devispdf/$idRdv");
+		}
+		catch(\Throwable $e){
+			$mess=$e->getMessage();
+			redirect("rdv/index?message=$mess");
+		}
+	}
+
+	public function rdvInsert(){
+		$dateDebut=$this->input->get("date");
+		$heureDebut=$this->input->get("heure");
+		$idCli=$this->input->get("client");
+		$prix=$this->input->get("prix");
+
+
+		$dateHDebut=new DateTime($dateDebut." ".$heureDebut);
+		$idService=$this->input->get("type");
+		$this->load->model('RdvModel');
+
+		$idRdv=$this->RdvModel->demandeRdvGen($dateHDebut,$idService,$idCli,$prix);
+		redirect("rdv/calendar");
+	}
+
+	public function calendar(){
+		$this->load->model('RdvModel');
+		$data['content']='Calendrier';
+		$data['services']=$this->RdvModel->getAll();
+		$data['services']=json_encode($data['services']);
+		$this->load->view('partials/template',$data);
+		
+	}
+
+	public function formRdv($dateForm){
+		$this->load->model('SlotModel');
+		$data['slot']=$this->SlotModel->getAll();
+		$data['date']=$dateForm;
+		$this->load->model('ServiceModel');
+		$data['services']=$this->ServiceModel->getAll();
+		
+		$this->load->model('ClientModel');
+		$data['client']=$this->ClientModel->getAll();
+		$data['content']='InsertRdv';
+		$this->load->view('partials/template',$data);
 	}
 
 	public function devispdf($idRdv){

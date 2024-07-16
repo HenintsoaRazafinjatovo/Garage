@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,7 +74,7 @@
                     
                   </div>
 
-                  <form class="row g-3 needs-validation" action="<?php site_url('client/verifLogin') ?>" method="post" novalidate>
+                  <form class="row g-3 needs-validation" action="<?php echo site_url('client/verifLogin') ?>" method="post" novalidate>
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Numéro</label>
@@ -84,13 +85,16 @@
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Type de voiture</label>
-                      <input type="text" name="type" class="form-control" id="type" required>
+                        <input type="text" name="type" class="form-control" id="type" required>
                       <div class="invalid-feedback">Veuillez entrer votre type de voiture.</div>
                     </div>
 
                     
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Login</button>
+                    </div>
+                    <div class="col-12">
+                      <p > <a href="<?php echo site_url(''); ?>">Login admin.</a></p>
                     </div>
                   </form>
 

@@ -9,7 +9,7 @@
                 <h1>Prendre rendez-vous</h1>
             </div>
             <div>
-                <form action="<?php echo site_url('rdv/demandeRdv')?>" meyhod="post">
+                <form action="<?php echo site_url('rdv/rdvInsert')?>" meyhod="post">
                     <div class="row mb-3">
                         <label for="inputDate" class="col-sm-2 col-form-label">Date </label>
                         <div class="col-sm-10">

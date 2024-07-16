@@ -27,20 +27,22 @@
 
         <!-- Template Main CSS File -->
         <link href= "<?php echo base_url( "assets/css/style.css") ?>" rel= "stylesheet" >
+        
+        
     </head>
     <body>
         <header id="header" class="header fixed-top d-flex align-items-center">
 
             <div class="d-flex align-items-center justify-content-between">
             <a href="#" class="logo d-flex align-items-center">
-            <i class="bi bi-list toggle-sidebar-btn"></i>
+            
                 <img src="<?php echo base_url( "assets/img/logo.png") ?>" alt="">
-                
+                <i class="bi bi-list toggle-sidebar-btn"></i>
             </a>
             <div>
                 <ul>
                
-                    <a class="dropdown-item d-flex align-items-center" href="#">
+                    <a class="dropdown-item d-flex align-items-center" href="<?php echo site_url('client/disconnect') ?>">
                       <i class="bi bi-box-arrow-right"></i>
                       <span>Sign Out</span>
                     </a>

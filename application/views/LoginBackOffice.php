@@ -73,7 +73,7 @@
                     
                   </div>
 
-                  <form class="row g-3 needs-validation" action="<?php echo site_url(' ') ?>" method="post" novalidate>
+                  <form class="row g-3 needs-validation" action="<?php echo site_url('admin/verifLogin') ?>" method="post" novalidate>
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Email</label>
@@ -86,8 +86,8 @@
                         
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Type de voiture</label>
-                      <input type="text" name="type" class="form-control" id="type" required>
+                      <label for="yourPassword" class="form-label">Mot de passe</label>
+                      <input type="password" name="password" class="form-control" id="type" required>
                       <div class="invalid-feedback">Veuillez entrer votre type de voiture.</div>
                     </div>
 
