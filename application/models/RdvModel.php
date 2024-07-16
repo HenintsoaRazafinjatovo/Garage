@@ -11,6 +11,7 @@ class RdvModel extends CI_Model
         return $this->db->insert('Rdv',$data);
     }
 
+
     public function update($id,$data){
         $this->db->where('id_Rdv',$id);
         return $this->db->update('Rdv',$data);

@@ -3,13 +3,8 @@
                 <h1>Insert rendez-vous</h1>
             </div>
             <div>
-                <form action="<?php echo site_url(' ')?>" meyhod="post">
-                    <div class="row mb-3">
-                        <label for="inputDate" class="col-sm-2 col-form-label">Id </label>
-                        <div class="col-sm-10">
-                            <input type="number" name="id" class="form-control">
-                        </div>
-                    </div>
+                <form action="<?php echo site_url('rdv/rdvInsert ')?>" method="post">
+                    
                     <div class="row mb-3">
                         <label for="inputTime" class="col-sm-2 col-form-label">Date</label>
                         <div class="col-sm-10">
@@ -44,7 +39,7 @@
                     </div>
                     <label class="col-sm-2 col-form-label">Slot</label>
                         <div class="col-sm-10">
-                            <select class="form-select" name="type" aria-label="Default select example">
+                            <select class="form-select" name="slot" aria-label="Default select example">
                             <option selected>Choisir Slot</option>
                             <?php foreach ($services as $key => $value) { ?>
                                 

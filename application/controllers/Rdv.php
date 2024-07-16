@@ -44,6 +44,74 @@ class Rdv extends CI_Controller {
 		}
 	}
 
+	
+
+	public function insertRdv(){
+
+		$dateDebut=$this->input->get("dateRdv");
+		$heureDebut=$this->input->get("heure");
+		$idClient=$idClient['Id_Client'];
+
+		$dateHDebut=new DateTime($dateDebut." ".$heureDebut);
+		$idService=$this->input->get("type");
+		$idClient=$this->session->userdata("client");
+		
+		
+
+		$this->load->model('RdvModel');
+		try{
+			$idRdv=$this->RdvModel->demandeRdv($dateHDebut,$idService,$idClient);
+			 redirect("rdv/devispdf/$idRdv");
+		}
+		catch(\Throwable $e){
+			$mess=$e->getMessage();
+			redirect("rdv/index?message=$mess");
+		}
+	}
+
+	public function getRdv(){
+		$idOlona=$this->session->userdata("admin");
+		$this->load->model('RdvModel');
+		$data['services']=$this->RdvModel->getAll();
+		$this->load->view('partials/template');
+	}
+
+	public function rdvInsert(){
+		$dateDebut=$this->input->get("date");
+		$heureDebut=$this->input->get("heure");
+		$idCli=$this->input->get("Id_Client");
+
+		$dateHDebut=new DateTime($dateDebut." ".$heureDebut);
+		$idService=$this->input->get("type");
+		$idSlot=$this->input->get("slot");
+		$idClient=$this->session->userdata("admin");
+		$data=array(
+			'dateHdebut'=>$dateHDebut->format('d/m/Y H:i'),
+			'Id_Service'=>$idService,
+			'Id_Client'=>$idCli,
+			'Id_Slot'=>$idSlot
+		);
+		
+		
+
+		$this->load->model('RdvModel');
+		try{
+			$idRdv=$this->RdvModel->insert($data);
+				redirect("rdv/calendar");
+		}
+		catch(\Throwable $e){
+			$mess=$e->getMessage();
+			redirect("rdv/calendar?message=$mess");
+		}
+	}
+
+	public function formRdv(){
+		$idOlona=$this->session->userdata("admin");
+		$this->load->model('RdvModel');
+
+		$this->load->view('partials/template',$data);
+	}
+
 	public function devispdf($idRdv){
         $this->load->model('RdvModel');
         $rdv = $this->RdvModel->getById($idRdv);
