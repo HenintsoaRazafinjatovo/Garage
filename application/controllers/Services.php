@@ -26,7 +26,7 @@ class Services extends CI_Controller {
         $this->load->model("ServiceModel");
         $data = array(
             'intitule' => $this->input->post('intitule'),
-            'duree' => $this->input->post('duree'),
+            'duree' => $this->ServiceModel->doubleHour($this->input->post('duree')),
             'prix' => $this->input->post('prix')
         );
         $this->ServiceModel->insert($data);

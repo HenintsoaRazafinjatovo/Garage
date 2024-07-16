@@ -39,8 +39,11 @@ class ServiceModel extends CI_Model
     function formatHour($double_heure){
         $heures = floor($double_heure);
         $minutes = ($double_heure - $heures) * 60;
-        return sprintf("%dh%02d", $heures, $minutes);
+        return sprintf("%02d:%02d", $heures, $minutes);
+    }
+
+    function doubleHour($heure) {
+        list($heures, $minutes) = explode(':', $heure);
+        return $heures + ($minutes / 60);
     }
 }
-
-?>

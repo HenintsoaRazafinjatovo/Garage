@@ -33,7 +33,7 @@
                     <div class="row mb-3">
                         <label for="inputDate" class="col-sm-2 col-form-label">Duree </label>
                         <div class="col-sm-10">
-                            <input type="text" name="duree" class="form-control" value="<?php echo $duree ?>">
+                            <input type="time" name="duree" class="form-control" value="<?php echo $duree ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
