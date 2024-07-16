@@ -30,12 +30,11 @@ class Devis extends CI_Controller {
 		$this->load->view('partials/template',$data);
     }
 
-    public function insertPaiement(){
+    public function insertPaiement($idRdv){
         $this->load->model("PaiementModel");
         $data = array(
-            'intitule' => $this->input->post('intitule'),
-            'duree' => $this->input->post('duree'),
-            'prix' => $this->input->post('prix')
+            'datePaiement' => $this->input->post('date'),
+            'Id_Rdv' => $idRdv
         );
         $this->PaiementModel->insert($data);
         redirect('devis');
